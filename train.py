@@ -225,12 +225,12 @@ def train_epoch(epoch):
                 stidx, round(np.mean(all_costs), 2),
                 int(len(all_costs) * params.batch_size / (time.time() - last_time)),
                 int(words_count * 1.0 / (time.time() - last_time)),
-                round(100. * correct / (stidx + k), 2)))
+                round(100. * correct.item() / (stidx + k), 2)))
             print(logs[-1])
             last_time = time.time()
             words_count = 0
             all_costs = []
-    train_acc = round(100 * correct/len(sent), 2)
+    train_acc = round(100 * correct.item()/len(sent), 2)
     print('result: epoch {}; mean train accuracy: {}'.format(epoch, train_acc))
 
     # save checkpoint every epoch
