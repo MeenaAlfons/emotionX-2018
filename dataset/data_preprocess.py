@@ -1,6 +1,6 @@
 import json
 import os
-from dataset.preproccess import tokenize
+from preproccess import tokenize
 
 
 data_types = ['EmotionPush', 'Friends']
