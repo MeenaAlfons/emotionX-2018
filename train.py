@@ -194,7 +194,7 @@ def train_epoch(epoch):
 
         #loss
         loss = loss_fn(output, label_batch)
-        all_costs.append(loss.data[0])
+        all_costs.append(loss.item())
         words_count += sent_batch.nelement() / params.embed_size
 
         # backward
