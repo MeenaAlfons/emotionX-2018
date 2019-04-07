@@ -258,9 +258,9 @@ correct_count = deepcopy(labels_count)
 
 def compute_acc(pred, label, correct_count, labels_count):
     for p, l in zip(pred, label):
-        labels_count[reverse_labels[l]] += 1
+        labels_count[reverse_labels[l.item()]] += 1
         if p == l:
-            correct_count[reverse_labels[l]] += 1
+            correct_count[reverse_labels[l.item()]] += 1
     return correct_count, labels_count
 
 def evaluate(epoch, eval_type='valid', correct_count=correct_count, labels_count=labels_count):
