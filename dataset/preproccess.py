@@ -68,8 +68,25 @@ def tokenize(text):
     def re_sub(pattern, repl):
         return re.sub(pattern, repl, text, flags=FLAGS)
 
-    text = re_sub(r"/n", " ")
+    newline_found = text.find("\n") > -1
+    backslash_n_found = text.find("\\n") > -1
+    forwardslash_n_found = text.find("/n") > -1
+    
+    if newline_found:
+        print("newline_found")
+    
+    if backslash_n_found:
+        print("backslash n found")
+
+    if forwardslash_n_found: print("Before {}".format(text))
+    text = re_sub(r"/n/n", "\n\n")
+    text = re_sub(r"([^\w])/n", "\1\n")
+    text = re_sub(r"([^_]\d)/n", "\1\n")
+    text = re_sub(r"/n(\d)", "\n\1")
+    if forwardslash_n_found: print("after {}".format(text))
+
     text = re_sub(r"https?:\/\/\S+\b|www\.(\w+\.)+\S*", "<url>")
+    text = re_sub(r"[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}", "<email>")
     text = re_sub(r"/"," / ")
     text = re_sub(r"@\w+", "<user>")
     text = re_sub(r"{}{}[)dD]+|[)dD]+{}{}".format(eyes, nose, nose, eyes), "<smile>")
