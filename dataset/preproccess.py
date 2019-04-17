@@ -80,7 +80,7 @@ def tokenize(text):
 
     if forwardslash_n_found: print("Before {}".format(text))
     text = re_sub(r"/n/n", "\n\n")
-    text = re_sub(r"([^\w])/n", "\1\n")
+    text = re_sub(r"([^\w])/n", "\2\n")
     text = re_sub(r"([^_]\d)/n", "\1\n")
     text = re_sub(r"/n(\d)", "\n\1")
     if forwardslash_n_found: print("after {}".format(text))
