@@ -80,9 +80,9 @@ def tokenize(text):
 
     if forwardslash_n_found: print("Before {}".format(text))
     text = re_sub(r"/n/n", "\n\n")
-    text = re_sub(r"([^\w])/n", "\2\n")
-    text = re_sub(r"([^_]\d)/n", "\1\n")
-    text = re_sub(r"/n(\d)", "\n\1")
+    text = re_sub(r"([^\w])/n", r"\1\n")
+    text = re_sub(r"([^_]\d)/n", r"\1\n")
+    text = re_sub(r"/n(\d)", r"\n\1")
     if forwardslash_n_found: print("after {}".format(text))
 
     text = re_sub(r"https?:\/\/\S+\b|www\.(\w+\.)+\S*", "<url>")
